@@ -79,147 +79,175 @@
       <Variable x:TypeArguments="x:String" Default="https://www.computrabajo.com/" Name="urlBase" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtFinal" />
       <Variable x:TypeArguments="x:String" Default="Excel/informeOfertas.xls" Name="bookFinal" />
+      <Variable x:TypeArguments="ui:GenericValue" Name="selector" />
     </Flowchart.Variables>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID4</x:Reference>
-    </Flowchart.StartNode>
-    <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_7">
-      <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" WorkbookPath="[master]">
-        <ui:ExcelApplicationScope.Body>
-          <ActivityAction x:TypeArguments="ui:WorkbookApplication">
-            <ActivityAction.Argument>
-              <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
-            </ActivityAction.Argument>
-            <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_7">
-              <ui:ExcelReadRange AddHeaders="True" DataTable="[dtKeyWord]" DisplayName="Read Range" sap2010:WorkflowViewState.IdRef="ExcelReadRange_3" Range="A2" SheetName="Master" />
-              <ui:ExcelReadRange AddHeaders="True" DataTable="[dtUrl]" DisplayName="Read Range" sap2010:WorkflowViewState.IdRef="ExcelReadRange_4" Range="B2" SheetName="Master" />
-            </Sequence>
-          </ActivityAction>
-        </ui:ExcelApplicationScope.Body>
-      </ui:ExcelApplicationScope>
-      <FlowStep.Next>
-        <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_9">
-          <ui:OpenBrowser UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Open Browser" Hidden="False" sap2010:WorkflowViewState.IdRef="OpenBrowser_2" NewSession="True" Private="False" Url="[urlBase]">
-            <ui:OpenBrowser.Body>
-              <ActivityAction x:TypeArguments="x:Object">
-                <ActivityAction.Argument>
-                  <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                </ActivityAction.Argument>
-                <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_9" />
-              </ActivityAction>
-            </ui:OpenBrowser.Body>
-          </ui:OpenBrowser>
-          <FlowStep.Next>
-            <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_11">
-              <ui:BuildDataTable DataTable="[dtFinal]" DisplayName="Build Data Table" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Empresa&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;UrlEmpresa&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Oferta&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;UrlOferta&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Descripcion&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Ciudad&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
-              <FlowStep.Next>
-                <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_8">
-                  <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dtUrl]" DisplayName="For Each Row" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
-                    <ui:ForEachRow.Body>
-                      <ActivityAction x:TypeArguments="sd:DataRow">
-                        <ActivityAction.Argument>
-                          <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
-                        </ActivityAction.Argument>
-                        <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dtKeyWord]" DisplayName="For Each Row" sap2010:WorkflowViewState.IdRef="ForEachRow_6">
-                          <ui:ForEachRow.Body>
-                            <ActivityAction x:TypeArguments="sd:DataRow">
-                              <ActivityAction.Argument>
-                                <DelegateInArgument x:TypeArguments="sd:DataRow" Name="word" />
-                              </ActivityAction.Argument>
-                              <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_21">
-                                <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'iexplore.exe Bolsa'" sap2010:WorkflowViewState.IdRef="BrowserScope_6" InformativeScreenshot="7386189b051291579dc109c3bd552f78" Selector="&lt;html title='Bolsa de trabajo, ofertas de trabajo | Buscar empleo en CompuTra*' /&gt;">
-                                  <ui:BrowserScope.Body>
-                                    <ActivityAction x:TypeArguments="x:Object">
-                                      <ActivityAction.Argument>
-                                        <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                                      </ActivityAction.Argument>
-                                      <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_20">
-                                        <ui:NavigateTo Browser="{x:Null}" DisplayName="Navigate To" sap2010:WorkflowViewState.IdRef="NavigateTo_7" Url="[row.Item(0).ToString + &quot;ofertas-de-trabajo/?q=&quot; +word.Item(0).ToString]" />
-                                        <Delay Duration="00:00:05" sap2010:WorkflowViewState.IdRef="Delay_3" />
-                                        <Sequence DisplayName="Data Scraping" sap2010:WorkflowViewState.IdRef="Sequence_23">
-                                          <Sequence.Variables>
-                                            <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
-                                            <Variable x:TypeArguments="ui:Browser" Name="dtScrap" />
-                                          </Sequence.Variables>
-                                          <Sequence DisplayName="Data Scraping">
+      <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_7">
+        <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" WorkbookPath="[master]">
+          <ui:ExcelApplicationScope.Body>
+            <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <ui:ExcelReadRange AddHeaders="True" DataTable="[dtKeyWord]" DisplayName="Read Range" sap2010:WorkflowViewState.IdRef="ExcelReadRange_3" Range="A1" SheetName="Master" />
+                <ui:ExcelReadRange AddHeaders="True" DataTable="[dtUrl]" DisplayName="Read Range" sap2010:WorkflowViewState.IdRef="ExcelReadRange_4" Range="B1" SheetName="Master" />
+              </Sequence>
+            </ActivityAction>
+          </ui:ExcelApplicationScope.Body>
+        </ui:ExcelApplicationScope>
+        <FlowStep.Next>
+          <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_9">
+            <ui:OpenBrowser UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Open Browser" Hidden="False" sap2010:WorkflowViewState.IdRef="OpenBrowser_2" NewSession="True" Private="False" Url="[urlBase]">
+              <ui:OpenBrowser.Body>
+                <ActivityAction x:TypeArguments="x:Object">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_9" />
+                </ActivityAction>
+              </ui:OpenBrowser.Body>
+            </ui:OpenBrowser>
+            <FlowStep.Next>
+              <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_11">
+                <ui:BuildDataTable DataTable="[dtFinal]" DisplayName="Build Data Table" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Empresa&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;UrlEmpresa&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Oferta&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;UrlOferta&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Descripcion&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Ciudad&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
+                <FlowStep.Next>
+                  <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_8">
+                    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dtUrl]" DisplayName="For Each Row" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
+                      <ui:ForEachRow.Body>
+                        <ActivityAction x:TypeArguments="sd:DataRow">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                          </ActivityAction.Argument>
+                          <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dtKeyWord]" DisplayName="For Each Row" sap2010:WorkflowViewState.IdRef="ForEachRow_6">
+                            <ui:ForEachRow.Body>
+                              <ActivityAction x:TypeArguments="sd:DataRow">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="sd:DataRow" Name="word" />
+                                </ActivityAction.Argument>
+                                <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                                  <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'iexplore.exe Bolsa'" sap2010:WorkflowViewState.IdRef="BrowserScope_6" InformativeScreenshot="7386189b051291579dc109c3bd552f78" Selector="&lt;html title='Bolsa de trabajo, ofertas de trabajo | Buscar empleo en CompuTra*' /&gt;">
+                                    <ui:BrowserScope.Body>
+                                      <ActivityAction x:TypeArguments="x:Object">
+                                        <ActivityAction.Argument>
+                                          <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                                        </ActivityAction.Argument>
+                                        <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                                          <ui:NavigateTo Browser="{x:Null}" DisplayName="Navigate To" sap2010:WorkflowViewState.IdRef="NavigateTo_7" Url="[row.Item(0).ToString + &quot;ofertas-de-trabajo/?q=&quot; +word.Item(0).ToString]" />
+                                          <Delay Duration="00:00:05" sap2010:WorkflowViewState.IdRef="Delay_3" />
+                                          <Assign sap2010:WorkflowViewState.IdRef="Assign_1">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="ui:GenericValue">[selector]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="ui:GenericValue">["Trabajo de " + word.Item(0).ToString + " Mayo 2019 | Computrabajo Colombia"]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <Sequence DisplayName="Data Scraping" sap2010:WorkflowViewState.IdRef="Sequence_23">
                                             <Sequence.Variables>
                                               <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
+                                              <Variable x:TypeArguments="ui:Browser" Name="dtScrap" />
                                             </Sequence.Variables>
-                                            <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'Trabajode Page'" InformativeScreenshot="e1927bcedccedfbffde372001ab97a5b" Selector="&lt;html title='Trabajo de sql Mayo 2019 | Computrabajo Perú' /&gt;">
-                                              <ui:BrowserScope.Body>
-                                                <ActivityAction x:TypeArguments="x:Object">
-                                                  <ActivityAction.Argument>
-                                                    <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                                                  </ActivityAction.Argument>
-                                                  <Sequence DisplayName="Do">
-                                                    <ui:ExtractData ContinueOnError="True" DataTable="[ExtractDataTable]" DelayBetweenPagesMS="300" DisplayName="Extract Structured Data 'DIV  p_ofertas'" ExtractMetadata="&lt;extract&gt;&lt;column name='Empresa' attr='text' exact='1' attr2='href' name2='Column2'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' class='iO' idx='1' /&gt;&lt;webctrl tag='h2' class='tO' idx='1' /&gt;&lt;webctrl tag='a' class='js-o-link' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" MaxNumberOfResults="100" NextLinkSelector="&lt;webctrl aaname='Siguiente' parentid='MainContainer' tag='SPAN' /&gt;">
-                                                      <ui:ExtractData.Target>
-                                                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="d15b33520f09863026fbcecebc602294" Selector="&lt;webctrl id='p_ofertas' tag='DIV' /&gt;" WaitForReady="COMPLETE" />
-                                                      </ui:ExtractData.Target>
-                                                      <sap2010:WorkflowViewState.IdRef>ExtractData_3</sap2010:WorkflowViewState.IdRef>
-                                                    </ui:ExtractData>
-                                                    <sap2010:WorkflowViewState.IdRef>Sequence_28</sap2010:WorkflowViewState.IdRef>
-                                                  </Sequence>
-                                                </ActivityAction>
-                                              </ui:BrowserScope.Body>
-                                              <sap2010:WorkflowViewState.IdRef>BrowserScope_9</sap2010:WorkflowViewState.IdRef>
-                                            </ui:BrowserScope>
-                                            <sap2010:WorkflowViewState.IdRef>Sequence_29</sap2010:WorkflowViewState.IdRef>
+                                            <Sequence DisplayName="Data Scraping" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                                              <Sequence.Variables>
+                                                <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
+                                              </Sequence.Variables>
+                                              <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'Trabajode Page'" sap2010:WorkflowViewState.IdRef="BrowserScope_10" InformativeScreenshot="c109d054f21948edd2388990c1a949f8" Selector="&lt;html idx='1' /&gt;">
+                                                <ui:BrowserScope.Body>
+                                                  <ActivityAction x:TypeArguments="x:Object">
+                                                    <ActivityAction.Argument>
+                                                      <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                                                    </ActivityAction.Argument>
+                                                    <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                                                      <ui:ExtractData ContinueOnError="True" DataTable="[dtScraping]" DelayBetweenPagesMS="300" DisplayName="Extract Structured Data 'DIV  p_ofertas'" ExtractMetadata="&lt;extract&gt;&lt;column name='Empresa' attr='text' exact='1' attr2='href' name2='UrlEmpresa'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' class='iO' idx='1' /&gt;&lt;webctrl tag='div' class='w_100 fl mtb5 lT' idx='1' text='-' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;webctrl tag='a' class='it-blank' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap2010:WorkflowViewState.IdRef="ExtractData_4" MaxNumberOfResults="100" NextLinkSelector="&lt;webctrl aaname='Siguiente' css-selector='body&amp;gt;div&amp;gt;section&amp;gt;div&amp;gt;ul&amp;gt;li&amp;gt;a' parentid='MainContainer' tag='A' /&gt;">
+                                                        <ui:ExtractData.Target>
+                                                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="bc7c3d26ee1cece65afe9ddb00778976" Selector="&lt;webctrl id='p_ofertas' tag='DIV' /&gt;" WaitForReady="COMPLETE" />
+                                                        </ui:ExtractData.Target>
+                                                      </ui:ExtractData>
+                                                    </Sequence>
+                                                  </ActivityAction>
+                                                </ui:BrowserScope.Body>
+                                              </ui:BrowserScope>
+                                            </Sequence>
                                           </Sequence>
+                                          <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dtScraping]" DisplayName="For Each Row" sap2010:WorkflowViewState.IdRef="ForEachRow_7">
+                                            <ui:ForEachRow.Body>
+                                              <ActivityAction x:TypeArguments="sd:DataRow">
+                                                <ActivityAction.Argument>
+                                                  <DelegateInArgument x:TypeArguments="sd:DataRow" Name="append" />
+                                                </ActivityAction.Argument>
+                                                <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[append.ItemArray]" DataTable="[dtFinal]" DisplayName="Add Data Row" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                                                </Sequence>
+                                              </ActivityAction>
+                                            </ui:ForEachRow.Body>
+                                          </ui:ForEachRow>
+                                          <ui:NavigateTo Browser="{x:Null}" DisplayName="Navigate To" sap2010:WorkflowViewState.IdRef="NavigateTo_8" Url="[urlBase]" />
+                                          <Delay Duration="00:00:05" sap2010:WorkflowViewState.IdRef="Delay_4" />
                                         </Sequence>
-                                        <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dtScraping]" DisplayName="For Each Row" sap2010:WorkflowViewState.IdRef="ForEachRow_7">
-                                          <ui:ForEachRow.Body>
-                                            <ActivityAction x:TypeArguments="sd:DataRow">
-                                              <ActivityAction.Argument>
-                                                <DelegateInArgument x:TypeArguments="sd:DataRow" Name="append" />
-                                              </ActivityAction.Argument>
-                                              <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_24">
-                                                <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[append.ItemArray]" DataTable="[dtFinal]" DisplayName="Add Data Row" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
-                                              </Sequence>
-                                            </ActivityAction>
-                                          </ui:ForEachRow.Body>
-                                        </ui:ForEachRow>
-                                        <ui:NavigateTo Browser="{x:Null}" DisplayName="Navigate To" sap2010:WorkflowViewState.IdRef="NavigateTo_8" Url="[urlBase]" />
-                                        <Delay Duration="00:00:05" sap2010:WorkflowViewState.IdRef="Delay_4" />
-                                      </Sequence>
-                                    </ActivityAction>
-                                  </ui:BrowserScope.Body>
-                                </ui:BrowserScope>
+                                      </ActivityAction>
+                                    </ui:BrowserScope.Body>
+                                  </ui:BrowserScope>
+                                </Sequence>
+                              </ActivityAction>
+                            </ui:ForEachRow.Body>
+                          </ui:ForEachRow>
+                        </ActivityAction>
+                      </ui:ForEachRow.Body>
+                    </ui:ForEachRow>
+                    <FlowStep.Next>
+                      <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_10">
+                        <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_4" WorkbookPath="[bookFinal]">
+                          <ui:ExcelApplicationScope.Body>
+                            <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                                <ui:ExcelWriteRange AddHeaders="False" DataTable="[dtFinal]" DisplayName="Write Range" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="Sheet1" StartingCell="A1" />
                               </Sequence>
                             </ActivityAction>
-                          </ui:ForEachRow.Body>
-                        </ui:ForEachRow>
-                      </ActivityAction>
-                    </ui:ForEachRow.Body>
-                  </ui:ForEachRow>
-                  <FlowStep.Next>
-                    <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_10">
-                      <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_4" WorkbookPath="[bookFinal]">
-                        <ui:ExcelApplicationScope.Body>
-                          <ActivityAction x:TypeArguments="ui:WorkbookApplication">
-                            <ActivityAction.Argument>
-                              <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
-                            </ActivityAction.Argument>
-                            <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_25">
-                              <ui:ExcelWriteRange AddHeaders="False" DataTable="[dtFinal]" DisplayName="Write Range" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="Sheet1" StartingCell="A1" />
-                            </Sequence>
-                          </ActivityAction>
-                        </ui:ExcelApplicationScope.Body>
-                      </ui:ExcelApplicationScope>
-                    </FlowStep>
-                  </FlowStep.Next>
-                </FlowStep>
-              </FlowStep.Next>
-            </FlowStep>
-          </FlowStep.Next>
-        </FlowStep>
-      </FlowStep.Next>
-    </FlowStep>
+                          </ui:ExcelApplicationScope.Body>
+                        </ui:ExcelApplicationScope>
+                      </FlowStep>
+                    </FlowStep.Next>
+                  </FlowStep>
+                </FlowStep.Next>
+              </FlowStep>
+            </FlowStep.Next>
+          </FlowStep>
+        </FlowStep.Next>
+      </FlowStep>
+    </Flowchart.StartNode>
     <x:Reference>__ReferenceID0</x:Reference>
     <x:Reference>__ReferenceID1</x:Reference>
     <x:Reference>__ReferenceID2</x:Reference>
     <x:Reference>__ReferenceID3</x:Reference>
-    <sads:DebugSymbol.Symbol>d0FDOlxVc2Vyc1xnZXJtYW4ucGF0acOxb1xEb2N1bWVudHNcVWlQYXRoXFNjcmFwaW5nQ1BXb3JkXE1haW4ueGFtbEBKA98BDwIBAUw0TEYCAQRPNE9TAgEDUTRRTgIBAlcHYyICAUBmC28cAgE8cg9yvg4CATl1E8IBIwIBDsUBF9ABMgIBBVeiAVesAQIBTF0NYBgCAUFmwQFmzAECAT5sEWxbAgE9cixyNwIBOnVEdU0CATd7Gb8BKQIBD8UBsgHFAb8BAgEMywEdzQEoAgEGXg9euAECAUdfD1+0AQIBQntKe1cCATWBAR+8ASoCARDMAR/MAdEBAgEHXj5eSwIBSl6eAV6iAQIBSV6tAV61AQIBSF8+X0cCAUVfmgFfngECAURfqQFfsQECAUOCASG7ATMCARHMAcoBzAHOAQIBC8wBUMwBWwIBCcwBtAHMAbwBAgEIggG8AoIBlgMCATSIASe4ATICARKJASmJAe8BAgEyigEpigFwAgEwiwEpqQE0AgEgqgEptQE5AgEYtgEptgGmAQIBFbcBKbcBcAIBE4kBmAGJAewBAgEzigE5igFDAgExjQFejQF7AgEhkAErqAE2AgEiqgFaqgFoAgEesAEvsgE6AgEZtgGYAbYBowECARa3ATm3AUMCARSSAWCSAX0CASOUAS2mAT8CASSxATGxAdMBAgEalAGTApQB2AICAS+aATOiAT4CASWxAXuxAYYBAgEcsQFcsQFwAgEbmwE1oAFGAgEmmwGZBJsBngQCAS6dAcgBnQH0AQIBLZsBjwGbAZQBAgEsmwFVmwFbAgErmwFmmwF6AgEpmwGwBJsB+gQCASibAdwBmwGFBAIBJw==</sads:DebugSymbol.Symbol>
+    <x:Reference>__ReferenceID4</x:Reference>
+    <FlowStep sap2010:WorkflowViewState.IdRef="FlowStep_12">
+      <Sequence DisplayName="Data Scraping" sap2010:WorkflowViewState.IdRef="Sequence_33">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
+        </Sequence.Variables>
+        <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'Trabajode Page'" sap2010:WorkflowViewState.IdRef="BrowserScope_11" InformativeScreenshot="94ba30c68323b8d8385a57a7b0867a39" Selector="&lt;html title='Trabajo de DESARROLLADOR Mayo 2019 | Computrabajo Colombia' /&gt;">
+          <ui:BrowserScope.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                <ui:ExtractData ContinueOnError="True" DataTable="[ExtractDataTable]" DelayBetweenPagesMS="300" DisplayName="Extract Structured Data 'DIV  p_ofertas'" ExtractMetadata="&lt;extract&gt;&lt;column name='Empresa' attr='text' exact='1' attr2='href' name2='UrlEmpresa'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' class='iO' idx='1' /&gt;&lt;webctrl tag='div' class='w_100 fl mtb5 lT' idx='1' text='-' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;webctrl tag='a' class='it-blank' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap2010:WorkflowViewState.IdRef="ExtractData_5" MaxNumberOfResults="100" NextLinkSelector="&lt;webctrl aaname='Siguiente' css-selector='body&amp;gt;div&amp;gt;section&amp;gt;div&amp;gt;ul&amp;gt;li&amp;gt;a' parentid='MainContainer' tag='A' /&gt;">
+                  <ui:ExtractData.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="bc7c3d26ee1cece65afe9ddb00778976" Selector="&lt;webctrl id='p_ofertas' tag='DIV' /&gt;" WaitForReady="COMPLETE" />
+                  </ui:ExtractData.Target>
+                </ui:ExtractData>
+              </Sequence>
+            </ActivityAction>
+          </ui:BrowserScope.Body>
+        </ui:BrowserScope>
+      </Sequence>
+    </FlowStep>
+    <sads:DebugSymbol.Symbol>d0FDOlxVc2Vyc1xnZXJtYW4ucGF0acOxb1xEb2N1bWVudHNcVWlQYXRoXFNjcmFwaW5nQ1BXb3JkXE1haW4ueGFtbENKA/sBDwIBAUw0TEYCAQRPNE9TAgEDUTRRTgIBAlYJYiQCAURlDW4eAgFAcRFxwA4CAT10FcUBJQIBDsgBGdMBNAIBBVakAVauAQIBUFwPXxoCAUVlwwFlzgECAUJrE2tdAgFBcS5xOQIBPnRGdE8CATt6G8IBKwIBD8gBtAHIAcEBAgEMzgEf0AEqAgEGXRFdugECAUteEV62AQIBRnpMelkCATmAASG/ASwCARDPASHPAdMBAgEHXUBdTQIBTl2gAV2kAQIBTV2vAV23AQIBTF5AXkkCAUlenAFeoAECAUheqwFeswECAUeBASO+ATUCARHPAcwBzwHQAQIBC88BUs8BXQIBCc8BtgHPAb4BAgEIgQG+AoEBmAMCATiHASm7ATQCARKIASuIAfEBAgE2iQEriQFyAgE0igErkQE0AgEwkgErrAE2AgEgrQEruAE7AgEYuQEruQGoAQIBFboBK7oBcgIBE4gBmgGIAe4BAgE3iQE7iQFFAgE1jwFdjwGrAQIBM4wBXowBaAIBMZQBYJQBfQIBIZcBLasBOAIBIq0BXK0BagIBHrMBMbUBPAIBGbkBmgG5AaUBAgEWugE7ugFFAgEUmQFimQF/AgEjmwEvqgFBAgEktAEztAHVAQIBGpsBxwKbAd8CAgEvoQE1pwFAAgEltAF9tAGIAQIBHLQBXrQBcgIBG6IBN6YBSAIBJqIBpwWiAawFAgEupAHKAaQB9gECAS2iAYsBogGQAQIBLKIBV6IBXQIBK6IBaKIBdgIBKaIBvgWiAdsGAgEoogHYAaIB4wQCASc=</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -262,16 +290,17 @@
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="NavigateTo_7" sap:VirtualizedContainerService.HintSize="458,59" />
       <sap2010:ViewStateData Id="Delay_3" sap:VirtualizedContainerService.HintSize="458,22" />
-      <sap2010:ViewStateData Id="ExtractData_3" sap:VirtualizedContainerService.HintSize="314,106" />
-      <sap2010:ViewStateData Id="Sequence_28" sap:VirtualizedContainerService.HintSize="336,230">
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="458,60" />
+      <sap2010:ViewStateData Id="ExtractData_4" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="Sequence_30" sap:VirtualizedContainerService.HintSize="336,230">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="BrowserScope_9" sap:VirtualizedContainerService.HintSize="414,376" />
-      <sap2010:ViewStateData Id="Sequence_29" sap:VirtualizedContainerService.HintSize="436,500">
+      <sap2010:ViewStateData Id="BrowserScope_10" sap:VirtualizedContainerService.HintSize="414,376" />
+      <sap2010:ViewStateData Id="Sequence_31" sap:VirtualizedContainerService.HintSize="436,500">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -294,25 +323,25 @@
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="ForEachRow_7" sap:VirtualizedContainerService.HintSize="458,293" />
-      <sap2010:ViewStateData Id="NavigateTo_8" sap:VirtualizedContainerService.HintSize="436,59" />
-      <sap2010:ViewStateData Id="Delay_4" sap:VirtualizedContainerService.HintSize="436,22" />
-      <sap2010:ViewStateData Id="Sequence_20" sap:VirtualizedContainerService.HintSize="480,1403">
+      <sap2010:ViewStateData Id="NavigateTo_8" sap:VirtualizedContainerService.HintSize="458,59" />
+      <sap2010:ViewStateData Id="Delay_4" sap:VirtualizedContainerService.HintSize="458,22" />
+      <sap2010:ViewStateData Id="Sequence_20" sap:VirtualizedContainerService.HintSize="480,1503">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="BrowserScope_6" sap:VirtualizedContainerService.HintSize="494,1549" />
-      <sap2010:ViewStateData Id="Sequence_21" sap:VirtualizedContainerService.HintSize="516,1673">
+      <sap2010:ViewStateData Id="BrowserScope_6" sap:VirtualizedContainerService.HintSize="494,1649" />
+      <sap2010:ViewStateData Id="Sequence_21" sap:VirtualizedContainerService.HintSize="516,1773">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="ForEachRow_6" sap:VirtualizedContainerService.HintSize="546,1821" />
-      <sap2010:ViewStateData Id="ForEachRow_4" sap:VirtualizedContainerService.HintSize="576,1969">
+      <sap2010:ViewStateData Id="ForEachRow_6" sap:VirtualizedContainerService.HintSize="546,1921" />
+      <sap2010:ViewStateData Id="ForEachRow_4" sap:VirtualizedContainerService.HintSize="576,2069">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -381,6 +410,30 @@
             <av:Point x:Key="ShapeLocation">200,114.5</av:Point>
             <av:Size x:Key="ShapeSize">200,51</av:Size>
             <av:PointCollection x:Key="ConnectorLocation">300,165.5 300,194.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ExtractData_5" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="Sequence_32" sap:VirtualizedContainerService.HintSize="336,230">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="BrowserScope_11" sap:VirtualizedContainerService.HintSize="414,376" />
+      <sap2010:ViewStateData Id="Sequence_33" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_12">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,615.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
