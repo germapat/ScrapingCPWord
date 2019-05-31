@@ -143,32 +143,26 @@
                                               <InArgument x:TypeArguments="ui:GenericValue">["Trabajo de " + word.Item(0).ToString + " Mayo 2019 | Computrabajo Colombia"]</InArgument>
                                             </Assign.Value>
                                           </Assign>
-                                          <Sequence DisplayName="Data Scraping" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                                          <Sequence DisplayName="Data Scraping" sap2010:WorkflowViewState.IdRef="Sequence_41">
                                             <Sequence.Variables>
                                               <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
-                                              <Variable x:TypeArguments="ui:Browser" Name="dtScrap" />
                                             </Sequence.Variables>
-                                            <Sequence DisplayName="Data Scraping" sap2010:WorkflowViewState.IdRef="Sequence_31">
-                                              <Sequence.Variables>
-                                                <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
-                                              </Sequence.Variables>
-                                              <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'Trabajode Page'" sap2010:WorkflowViewState.IdRef="BrowserScope_10" InformativeScreenshot="c109d054f21948edd2388990c1a949f8" Selector="&lt;html idx='1' /&gt;">
-                                                <ui:BrowserScope.Body>
-                                                  <ActivityAction x:TypeArguments="x:Object">
-                                                    <ActivityAction.Argument>
-                                                      <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                                                    </ActivityAction.Argument>
-                                                    <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_30">
-                                                      <ui:ExtractData ContinueOnError="True" DataTable="[dtScraping]" DelayBetweenPagesMS="300" DisplayName="Extract Structured Data 'DIV  p_ofertas'" ExtractMetadata="&lt;extract&gt;&lt;column name='Empresa' attr='text' exact='1' attr2='href' name2='UrlEmpresa'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' class='iO' idx='1' /&gt;&lt;webctrl tag='div' class='w_100 fl mtb5 lT' idx='1' text='-' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;webctrl tag='a' class='it-blank' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap2010:WorkflowViewState.IdRef="ExtractData_4" MaxNumberOfResults="100" NextLinkSelector="&lt;webctrl aaname='Siguiente' css-selector='body&amp;gt;div&amp;gt;section&amp;gt;div&amp;gt;ul&amp;gt;li&amp;gt;a' parentid='MainContainer' tag='A' /&gt;">
-                                                        <ui:ExtractData.Target>
-                                                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="bc7c3d26ee1cece65afe9ddb00778976" Selector="&lt;webctrl id='p_ofertas' tag='DIV' /&gt;" WaitForReady="COMPLETE" />
-                                                        </ui:ExtractData.Target>
-                                                      </ui:ExtractData>
-                                                    </Sequence>
-                                                  </ActivityAction>
-                                                </ui:BrowserScope.Body>
-                                              </ui:BrowserScope>
-                                            </Sequence>
+                                            <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'Trabajode Page'" sap2010:WorkflowViewState.IdRef="BrowserScope_14" InformativeScreenshot="15b5e7f06db599c371685ef26c0b1a84" Selector="&lt;html idx='1' /&gt;">
+                                              <ui:BrowserScope.Body>
+                                                <ActivityAction x:TypeArguments="x:Object">
+                                                  <ActivityAction.Argument>
+                                                    <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                                                  </ActivityAction.Argument>
+                                                  <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                                                    <ui:ExtractData ContinueOnError="True" DataTable="[dtScraping]" DelayBetweenPagesMS="300" DisplayName="Extract Structured Data 'DIV  p_ofertas'" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' class='iO' idx='1' /&gt;&lt;/row&gt;&lt;column name='Oferta' attr='text' exact='1' attr2='href' name2='UrlOferta'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' class='iO' idx='1' /&gt;&lt;webctrl tag='h2' class='tO' idx='1' /&gt;&lt;webctrl tag='a' class='js-o-link' idx='1' /&gt;&lt;/column&gt;&lt;column name='Empresa' attr='text' exact='1' attr2='href' name2='UrlEmpresa'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' class='iO' idx='1' /&gt;&lt;webctrl tag='div' class='w_100 fl mtb5 lT' idx='1' text='-' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;webctrl tag='a' class='it-blank' idx='1' /&gt;&lt;/column&gt;&lt;column name='Descripcion' attr='text' exact='1'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' class='iO' idx='1' /&gt;&lt;webctrl tag='p' idx='1' /&gt;&lt;/column&gt;&lt;column name='Ciudad' attr='text' exact='1'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' class='iO' idx='1' /&gt;&lt;webctrl tag='div' class='w_100 fl mtb5 lT' idx='1' text='-' /&gt;&lt;webctrl tag='span' idx='2' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap2010:WorkflowViewState.IdRef="ExtractData_9" MaxNumberOfResults="0" NextLinkSelector="&lt;webctrl aaname='Siguiente' parentid='MainContainer' tag='SPAN' /&gt;">
+                                                      <ui:ExtractData.Target>
+                                                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="bc7c3d26ee1cece65afe9ddb00778976" Selector="&lt;webctrl id='p_ofertas' tag='DIV' /&gt;" WaitForReady="COMPLETE" />
+                                                      </ui:ExtractData.Target>
+                                                    </ui:ExtractData>
+                                                  </Sequence>
+                                                </ActivityAction>
+                                              </ui:BrowserScope.Body>
+                                            </ui:BrowserScope>
                                           </Sequence>
                                           <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dtScraping]" DisplayName="For Each Row" sap2010:WorkflowViewState.IdRef="ForEachRow_7">
                                             <ui:ForEachRow.Body>
@@ -247,7 +241,53 @@
         </ui:BrowserScope>
       </Sequence>
     </FlowStep>
-    <sads:DebugSymbol.Symbol>d0FDOlxVc2Vyc1xnZXJtYW4ucGF0acOxb1xEb2N1bWVudHNcVWlQYXRoXFNjcmFwaW5nQ1BXb3JkXE1haW4ueGFtbENKA/sBDwIBAUw0TEYCAQRPNE9TAgEDUTRRTgIBAlYJYiQCAURlDW4eAgFAcRFxwA4CAT10FcUBJQIBDsgBGdMBNAIBBVakAVauAQIBUFwPXxoCAUVlwwFlzgECAUJrE2tdAgFBcS5xOQIBPnRGdE8CATt6G8IBKwIBD8gBtAHIAcEBAgEMzgEf0AEqAgEGXRFdugECAUteEV62AQIBRnpMelkCATmAASG/ASwCARDPASHPAdMBAgEHXUBdTQIBTl2gAV2kAQIBTV2vAV23AQIBTF5AXkkCAUlenAFeoAECAUheqwFeswECAUeBASO+ATUCARHPAcwBzwHQAQIBC88BUs8BXQIBCc8BtgHPAb4BAgEIgQG+AoEBmAMCATiHASm7ATQCARKIASuIAfEBAgE2iQEriQFyAgE0igErkQE0AgEwkgErrAE2AgEgrQEruAE7AgEYuQEruQGoAQIBFboBK7oBcgIBE4gBmgGIAe4BAgE3iQE7iQFFAgE1jwFdjwGrAQIBM4wBXowBaAIBMZQBYJQBfQIBIZcBLasBOAIBIq0BXK0BagIBHrMBMbUBPAIBGbkBmgG5AaUBAgEWugE7ugFFAgEUmQFimQF/AgEjmwEvqgFBAgEktAEztAHVAQIBGpsBxwKbAd8CAgEvoQE1pwFAAgEltAF9tAGIAQIBHLQBXrQBcgIBG6IBN6YBSAIBJqIBpwWiAawFAgEupAHKAaQB9gECAS2iAYsBogGQAQIBLKIBV6IBXQIBK6IBaKIBdgIBKaIBvgWiAdsGAgEoogHYAaIB4wQCASc=</sads:DebugSymbol.Symbol>
+    <FlowStep sap2010:WorkflowViewState.IdRef="FlowStep_13">
+      <Sequence DisplayName="Data Scraping" sap2010:WorkflowViewState.IdRef="Sequence_36">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
+        </Sequence.Variables>
+        <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'Trabajode Page'" InformativeScreenshot="33a850df3c676328965d43c174bff582" Selector="&lt;html title='Trabajo de programador Mayo 2019 | Computrabajo Colombia' /&gt;">
+          <ui:BrowserScope.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do">
+                <ui:ExtractData ContinueOnError="True" DataTable="[ExtractDataTable]" DelayBetweenPagesMS="300" DisplayName="Extract Structured Data 'DIV  p_ofertas'" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' class='iO' /&gt;&lt;/row&gt;&lt;column name='Empresa' name2='urlEmpresa' attr2='href' exact='1' attr='text'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' class='iO' /&gt;&lt;webctrl tag='div' idx='1' class='w_100 fl mtb5 lT' text='-' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;webctrl tag='a' idx='1' class='it-blank' /&gt;&lt;/column&gt;&lt;column name='Oferta' name2='UrlOferta' attr2='href' exact='1' attr='text'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' class='iO' /&gt;&lt;webctrl tag='h2' idx='1' class='tO' /&gt;&lt;webctrl tag='a' idx='1' class='js-o-link' /&gt;&lt;/column&gt;&lt;column name='Descripcion' exact='1' attr='text'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' class='iO' /&gt;&lt;webctrl tag='p' idx='1' /&gt;&lt;/column&gt;&lt;column name='Ciudad' exact='1' attr='text'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' class='iO' /&gt;&lt;webctrl tag='div' idx='1' class='w_100 fl mtb5 lT' text='-' /&gt;&lt;webctrl tag='span' idx='2' /&gt;&lt;webctrl tag='span' idx='1' text=',' /&gt;&lt;webctrl tag='span' idx='2' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" MaxNumberOfResults="0" NextLinkSelector="&lt;webctrl aaname='Siguiente' css-selector='body&amp;gt;div&amp;gt;section&amp;gt;div&amp;gt;ul&amp;gt;li&amp;gt;a' parentid='MainContainer' tag='A' /&gt;">
+                  <ui:ExtractData.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="bc7c3d26ee1cece65afe9ddb00778976" Selector="&lt;webctrl id='p_ofertas' tag='DIV' /&gt;" WaitForReady="COMPLETE" />
+                  </ui:ExtractData.Target>
+                </ui:ExtractData>
+              </Sequence>
+            </ActivityAction>
+          </ui:BrowserScope.Body>
+        </ui:BrowserScope>
+      </Sequence>
+    </FlowStep>
+    <FlowStep sap2010:WorkflowViewState.IdRef="FlowStep_14">
+      <Sequence DisplayName="Data Scraping" sap2010:WorkflowViewState.IdRef="Sequence_37">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
+        </Sequence.Variables>
+        <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'Trabajode Page'" sap2010:WorkflowViewState.IdRef="BrowserScope_13" InformativeScreenshot="15b5e7f06db599c371685ef26c0b1a84" Selector="&lt;html idx='1' /&gt;">
+          <ui:BrowserScope.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_39">
+                <ui:ExtractData ContinueOnError="True" DataTable="[ExtractDataTable]" DelayBetweenPagesMS="300" DisplayName="Extract Structured Data 'DIV  p_ofertas'" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' class='iO' idx='1' /&gt;&lt;/row&gt;&lt;column name='Oferta' attr='text' exact='1' attr2='href' name2='UrlOferta'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' class='iO' idx='1' /&gt;&lt;webctrl tag='h2' class='tO' idx='1' /&gt;&lt;webctrl tag='a' class='js-o-link' idx='1' /&gt;&lt;/column&gt;&lt;column name='Empresa' attr='text' exact='1' attr2='href' name2='UrlEmpresa'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' class='iO' idx='1' /&gt;&lt;webctrl tag='div' class='w_100 fl mtb5 lT' idx='1' text='-' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;webctrl tag='a' class='it-blank' idx='1' /&gt;&lt;/column&gt;&lt;column name='Descripcion' attr='text' exact='1'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' class='iO' idx='1' /&gt;&lt;webctrl tag='p' idx='1' /&gt;&lt;/column&gt;&lt;column name='Ciudad' attr='text' exact='1'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' class='iO' idx='1' /&gt;&lt;webctrl tag='div' class='w_100 fl mtb5 lT' idx='1' text='-' /&gt;&lt;webctrl tag='span' idx='2' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap2010:WorkflowViewState.IdRef="ExtractData_8" MaxNumberOfResults="0" NextLinkSelector="&lt;webctrl idx='1' tag='SECTION' /&gt;">
+                  <ui:ExtractData.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="bc7c3d26ee1cece65afe9ddb00778976" Selector="&lt;webctrl id='p_ofertas' tag='DIV' /&gt;" WaitForReady="COMPLETE" />
+                  </ui:ExtractData.Target>
+                </ui:ExtractData>
+              </Sequence>
+            </ActivityAction>
+          </ui:BrowserScope.Body>
+        </ui:BrowserScope>
+      </Sequence>
+    </FlowStep>
+    <sads:DebugSymbol.Symbol>d0FDOlxVc2Vyc1xnZXJtYW4ucGF0acOxb1xEb2N1bWVudHNcVWlQYXRoXFNjcmFwaW5nQ1BXb3JkXE1haW4ueGFtbEFKA6MCDwIBAUw0TEYCAQRPNE9TAgEDUTRRTgIBAlYJYiQCAUJlDW4eAgE+cRFxwA4CATt0Fb8BJQIBDsIBGc0BNAIBBVakAVauAQIBTlwPXxoCAUNlwwFlzgECAUBrE2tdAgE/cS5xOQIBPHRGdE8CATl6G7wBKwIBD8IBtAHCAcEBAgEMyAEfygEqAgEGXRFdugECAUleEV62AQIBRHpMelkCATeAASG5ASwCARDJASHJAdMBAgEHXUBdTQIBTF2gAV2kAQIBS12vAV23AQIBSl5AXkkCAUdenAFeoAECAUZeqwFeswECAUWBASO4ATUCARHJAcwByQHQAQIBC8kBUskBXQIBCckBtgHJAb4BAgEIgQG+AoEBmAMCATaHASm1ATQCARKIASuIAfEBAgE0iQEriQFyAgEyigErkQE0AgEukgErpgE2AgEgpwErsgE7AgEYswErswGoAQIBFbQBK7QBcgIBE4gBmgGIAe4BAgE1iQE7iQFFAgEzjwFdjwGrAQIBMYwBXowBaAIBL5QBYJQBfQIBIZYBLaUBPwIBIqcBXKcBagIBHq0BMa8BPAIBGbMBmgGzAaUBAgEWtAE7tAFFAgEUlgHFApYB3QICAS2cATOiAT4CASOuATOuAdUBAgEanQE1oQFGAgEkrgF9rgGIAQIBHK4BXq4BcgIBG50B3wudAeILAgEsnwHIAZ8B9AECASudAYkBnQGOAQIBKp0BVZ0BWwIBKZ0BZp0BdAIBJ50B9AudAb4MAgEmnQHWAZ0BmwsCASU=</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -288,26 +328,19 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="NavigateTo_7" sap:VirtualizedContainerService.HintSize="458,59" />
-      <sap2010:ViewStateData Id="Delay_3" sap:VirtualizedContainerService.HintSize="458,22" />
-      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="458,60" />
-      <sap2010:ViewStateData Id="ExtractData_4" sap:VirtualizedContainerService.HintSize="314,106" />
-      <sap2010:ViewStateData Id="Sequence_30" sap:VirtualizedContainerService.HintSize="336,230">
+      <sap2010:ViewStateData Id="NavigateTo_7" sap:VirtualizedContainerService.HintSize="436,59" />
+      <sap2010:ViewStateData Id="Delay_3" sap:VirtualizedContainerService.HintSize="436,22" />
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="436,60" />
+      <sap2010:ViewStateData Id="ExtractData_9" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="Sequence_40" sap:VirtualizedContainerService.HintSize="336,230">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="BrowserScope_10" sap:VirtualizedContainerService.HintSize="414,376" />
-      <sap2010:ViewStateData Id="Sequence_31" sap:VirtualizedContainerService.HintSize="436,500">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_23" sap:VirtualizedContainerService.HintSize="458,624">
+      <sap2010:ViewStateData Id="BrowserScope_14" sap:VirtualizedContainerService.HintSize="414,376" />
+      <sap2010:ViewStateData Id="Sequence_41" sap:VirtualizedContainerService.HintSize="436,500">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -322,26 +355,26 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="ForEachRow_7" sap:VirtualizedContainerService.HintSize="458,293" />
-      <sap2010:ViewStateData Id="NavigateTo_8" sap:VirtualizedContainerService.HintSize="458,59" />
-      <sap2010:ViewStateData Id="Delay_4" sap:VirtualizedContainerService.HintSize="458,22" />
-      <sap2010:ViewStateData Id="Sequence_20" sap:VirtualizedContainerService.HintSize="480,1503">
+      <sap2010:ViewStateData Id="ForEachRow_7" sap:VirtualizedContainerService.HintSize="436,293" />
+      <sap2010:ViewStateData Id="NavigateTo_8" sap:VirtualizedContainerService.HintSize="436,59" />
+      <sap2010:ViewStateData Id="Delay_4" sap:VirtualizedContainerService.HintSize="436,22" />
+      <sap2010:ViewStateData Id="Sequence_20" sap:VirtualizedContainerService.HintSize="458,1379">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="BrowserScope_6" sap:VirtualizedContainerService.HintSize="494,1649" />
-      <sap2010:ViewStateData Id="Sequence_21" sap:VirtualizedContainerService.HintSize="516,1773">
+      <sap2010:ViewStateData Id="BrowserScope_6" sap:VirtualizedContainerService.HintSize="472,1525" />
+      <sap2010:ViewStateData Id="Sequence_21" sap:VirtualizedContainerService.HintSize="494,1649">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="ForEachRow_6" sap:VirtualizedContainerService.HintSize="546,1921" />
-      <sap2010:ViewStateData Id="ForEachRow_4" sap:VirtualizedContainerService.HintSize="576,2069">
+      <sap2010:ViewStateData Id="ForEachRow_6" sap:VirtualizedContainerService.HintSize="524,1797" />
+      <sap2010:ViewStateData Id="ForEachRow_4" sap:VirtualizedContainerService.HintSize="554,1945">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -437,18 +470,57 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="614,704">
+      <sap2010:ViewStateData Id="Sequence_36" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_13">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,715.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ExtractData_8" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="Sequence_39" sap:VirtualizedContainerService.HintSize="336,230">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="BrowserScope_13" sap:VirtualizedContainerService.HintSize="414,376" />
+      <sap2010:ViewStateData Id="Sequence_37" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_14">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,815.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="614,902">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
             <av:Size x:Key="ShapeSize">60,75</av:Size>
             <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,114.5</av:PointCollection>
-            <x:Double x:Key="Height">667.5</x:Double>
+            <x:Double x:Key="Height">866.5</x:Double>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Main_1" sap:VirtualizedContainerService.HintSize="654,784" />
+      <sap2010:ViewStateData Id="Main_1" sap:VirtualizedContainerService.HintSize="654,982" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>
